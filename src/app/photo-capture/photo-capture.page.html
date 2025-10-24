@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <div class="header-content">
+        <div class="logo">
+          <div class="road-icon">
+            <div class="road"></div>
+            <div class="location-pin"></div>
+          </div>
+          <span class="app-title">MERCHAN APP</span>
+        </div>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="capture-content">
+  <div class="capture-container">
+    <div class="camera-container">
+      <div class="camera-placeholder">
+        <ion-icon name="camera" class="camera-icon"></ion-icon>
+        <p class="camera-text">Vista de cámara</p>
+        <p class="camera-subtext">Toca el botón para tomar la foto</p>
+      </div>
+    </div>
+
+    <div class="capture-controls">
+      <ion-button 
+        class="capture-button" 
+        (click)="capturePhoto()">
+        <ion-icon name="camera" slot="icon-only" class="capture-icon"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,221 @@
+.reports-content {
+  --background: #1a1a1a;
+  --color: #ffffff;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.road-icon {
+  position: relative;
+  width: 30px;
+  height: 20px;
+}
+
+.road {
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #333 0%, #666 50%, #333 100%);
+  border-radius: 3px;
+  position: relative;
+  top: 8px;
+}
+
+.road::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    #fff 0px,
+    #fff 5px,
+    transparent 5px,
+    transparent 10px
+  );
+  transform: translateY(-50%);
+}
+
+.location-pin {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 5px solid #e74c3c;
+  transform: rotate(45deg);
+}
+
+.location-pin::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: -2px;
+  width: 4px;
+  height: 4px;
+  background: #e74c3c;
+  border-radius: 50%;
+}
+
+.app-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  color: #ffffff;
+}
+
+.reports-container {
+  padding: 20px;
+  min-height: calc(100vh - 120px);
+}
+
+.reports-list {
+  margin-bottom: 30px;
+}
+
+.report-item {
+  background: #2a2a2a;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.report-item:hover {
+  background: #3a3a3a;
+}
+
+.report-info {
+  flex: 1;
+}
+
+.report-address {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.report-details {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.report-type {
+  font-size: 0.9rem;
+  color: #cccccc;
+  background: #404040;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.report-status {
+  font-size: 0.9rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.status-pendiente {
+  background: #f39c12;
+  color: #000;
+}
+
+.status-en-proceso {
+  background: #3498db;
+  color: #fff;
+}
+
+.status-completado {
+  background: #27ae60;
+  color: #fff;
+}
+
+.arrow-icon {
+  color: #cccccc;
+  font-size: 1.2rem;
+}
+
+.add-report-button {
+  background: #2c3e50;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-report-button:hover {
+  background: #34495e;
+}
+
+.add-icon {
+  font-size: 1.3rem;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1a1a1a;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #333;
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  color: #cccccc;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #ffffff;
+}
+
+.social-handle {
+  color: #cccccc;
+  font-size: 0.9rem;
+  font-weight: 500;
+}

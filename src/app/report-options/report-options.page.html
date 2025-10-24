@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <div class="header-content">
+        <div class="logo">
+          <div class="road-icon">
+            <div class="road"></div>
+            <div class="location-pin"></div>
+          </div>
+          <span class="app-title">MERCHAN APP</span>
+        </div>
+        <h2 class="page-title">Mis reportes</h2>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="options-content">
+  <div class="options-container">
+    <div class="options-buttons">
+      <ion-button 
+        expand="block" 
+        class="option-button manual-button" 
+        (click)="goToManualReport()">
+        REPORTE MANUAL
+      </ion-button>
+      
+      <ion-button 
+        expand="block" 
+        class="option-button automatic-button" 
+        (click)="goToAutomaticReport()">
+        REPORTE AUTOMÁTICO
+      </ion-button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="social-links">
+      <ion-icon name="logo-facebook" class="social-icon"></ion-icon>
+      <ion-icon name="logo-instagram" class="social-icon"></ion-icon>
+    </div>
+    <div class="social-handle">@MERCHANAPP</div>
+  </div>
+</ion-content>

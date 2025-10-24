@@ -1,0 +1,7 @@
+{
+  "name": "Merchan",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

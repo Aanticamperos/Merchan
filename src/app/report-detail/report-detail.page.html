@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <div class="header-content">
+        <div class="logo">
+          <div class="road-icon">
+            <div class="road"></div>
+            <div class="location-pin"></div>
+          </div>
+          <span class="app-title">MERCHAN APP</span>
+        </div>
+        <h2 class="page-title">Mis reportes</h2>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="detail-content">
+  <div class="detail-container">
+    <div class="photo-container" *ngIf="report?.photo">
+      <img [src]="report?.photo" alt="Foto del reporte" class="report-photo">
+    </div>
+    
+    <div class="photo-placeholder" *ngIf="!report?.photo">
+      <ion-icon name="camera" class="camera-icon"></ion-icon>
+      <p>Sin foto disponible</p>
+    </div>
+
+    <div class="report-info" *ngIf="report">
+      <div class="info-item">
+        <label>Dirección:</label>
+        <span>{{ report.address }}</span>
+      </div>
+      <div class="info-item">
+        <label>Tipo:</label>
+        <span class="report-type">{{ report.type }}</span>
+      </div>
+      <div class="info-item">
+        <label>Estado:</label>
+        <span class="report-status" [class]="'status-' + report.status.toLowerCase().replace(' ', '-')">
+          {{ report.status }}
+        </span>
+      </div>
+      <div class="info-item" *ngIf="report.description">
+        <label>Descripción:</label>
+        <span>{{ report.description }}</span>
+      </div>
+      <div class="info-item">
+        <label>Fecha de creación:</label>
+        <span>{{ report.createdAt | date:'dd/MM/yyyy HH:mm' }}</span>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <ion-button expand="block" fill="outline" class="back-button" (click)="goBack()">
+        REGRESAR
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

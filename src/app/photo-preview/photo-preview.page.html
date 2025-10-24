@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <div class="header-content">
+        <div class="logo">
+          <div class="road-icon">
+            <div class="road"></div>
+            <div class="location-pin"></div>
+          </div>
+          <span class="app-title">MERCHAN APP</span>
+        </div>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="preview-content">
+  <div class="preview-container">
+    <div class="photo-container">
+      <img [src]="photoUrl" alt="Vista previa de la foto" class="preview-image">
+    </div>
+
+    <div class="action-buttons">
+      <ion-button 
+        expand="block" 
+        class="camera-button" 
+        (click)="retakePhoto()">
+        <ion-icon name="camera" slot="start"></ion-icon>
+        TOMAR FOTO
+      </ion-button>
+      
+      <ion-button 
+        expand="block" 
+        class="gallery-button" 
+        (click)="selectFromGallery()">
+        <ion-icon name="images" slot="start"></ion-icon>
+        SELECCIONAR DE GALERÍA
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

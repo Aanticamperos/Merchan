@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <div class="header-content">
+        <div class="logo">
+          <div class="road-icon">
+            <div class="road"></div>
+            <div class="location-pin"></div>
+          </div>
+          <span class="app-title">MERCHAN APP</span>
+        </div>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="permissions-content">
+  <div class="permissions-container">
+    <div class="permission-section">
+      <h2 class="permission-title">Permisos de ubicación</h2>
+      <p class="permission-description">
+        Para crear reportes precisos, necesitamos acceso a tu ubicación. 
+        Esto nos ayuda a identificar exactamente dónde está el problema.
+      </p>
+      
+      <div class="permission-icon">
+        <ion-icon name="location" class="location-icon"></ion-icon>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <ion-button 
+        expand="block" 
+        class="permission-button" 
+        (click)="requestLocationPermission()">
+        PERMISOS DE UBICACIÓN
+      </ion-button>
+      
+      <ion-button 
+        expand="block" 
+        class="photo-button" 
+        (click)="goToPhotoCapture()">
+        TOMAR FOTO
+      </ion-button>
+      
+      <ion-button 
+        expand="block" 
+        class="save-button" 
+        (click)="goToSave()">
+        GUARDAR
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

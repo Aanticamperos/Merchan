@@ -1,0 +1,97 @@
+.splash-content {
+  --background: #1a1a1a;
+  --color: #ffffff;
+}
+
+.splash-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+.logo-container {
+  margin-bottom: 60px;
+}
+
+.logo {
+  text-align: center;
+}
+
+.road-icon {
+  position: relative;
+  width: 120px;
+  height: 80px;
+  margin: 0 auto 20px;
+}
+
+.road {
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(90deg, #333 0%, #666 50%, #333 100%);
+  border-radius: 10px;
+  position: relative;
+  top: 30px;
+}
+
+.road::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    #fff 0px,
+    #fff 20px,
+    transparent 20px,
+    transparent 40px
+  );
+  transform: translateY(-50%);
+}
+
+.location-pin {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 20px solid #e74c3c;
+  transform: rotate(45deg);
+}
+
+.location-pin::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: -8px;
+  width: 16px;
+  height: 16px;
+  background: #e74c3c;
+  border-radius: 50%;
+}
+
+.app-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.message-container {
+  text-align: center;
+}
+
+.welcome-message {
+  font-size: 1.2rem;
+  color: #cccccc;
+  margin: 0;
+  line-height: 1.5;
+  max-width: 300px;
+}
