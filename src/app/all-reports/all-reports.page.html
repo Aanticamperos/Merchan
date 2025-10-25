@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/my-reports"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <div class="header-content">
+        <h2 class="page-title">Todos los reportes</h2>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="reports-content">
+  <div class="reports-container">
+    <div class="reports-list">
+      <div class="report-item" *ngFor="let report of reports">
+        <div class="report-info" (click)="viewReport(report)">
+          <div class="report-address">{{ report.address }}</div>
+          <div class="report-details">
+            <span class="report-type">{{ getTypeDisplayName(report.type) }}</span>
+            <span class="report-status" [class]="'status-' + report.status.toLowerCase().replace(' ', '-')">
+              {{ report.status }}
+            </span>
+          </div>
+        </div>
+        <div class="report-actions">
+          <ion-button 
+            fill="clear" 
+            class="delete-button"
+            (click)="deleteReport(report, $event)">
+            <ion-icon name="trash" class="delete-icon"></ion-icon>
+          </ion-button>
+          <ion-icon name="chevron-forward" class="arrow-icon"></ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="social-links">
+      <ion-icon name="logo-facebook" class="social-icon"></ion-icon>
+      <ion-icon name="logo-instagram" class="social-icon"></ion-icon>
+    </div>
+    <div class="social-handle">@MERCHANAPP</div>
+  </div>
+</ion-content>
+

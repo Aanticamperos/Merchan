@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, AlertController } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, IonBackButton, AlertController } from '@ionic/angular/standalone';
 import { LocationService } from '../services/location.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { LocationService } from '../services/location.service';
   templateUrl: './location-permissions.page.html',
   styleUrls: ['./location-permissions.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon]
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, IonBackButton]
 })
 export class LocationPermissionsPage implements OnInit {
 

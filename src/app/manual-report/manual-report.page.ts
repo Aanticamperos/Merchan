@@ -2,16 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonInput, IonSelect, IonSelectOption, IonTextarea, IonButton, IonIcon, AlertController } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonInput, IonSelect, IonSelectOption, IonTextarea, IonButton, IonIcon, IonButtons, IonBackButton, AlertController } from '@ionic/angular/standalone';
 import { CameraService } from '../services/camera.service';
 import { LocationService } from '../services/location.service';
+import { ReportService } from '../services/report.service';
+import { Report } from '../models/report';
 
 @Component({
   selector: 'app-manual-report',
   templateUrl: './manual-report.page.html',
   styleUrls: ['./manual-report.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonInput, IonSelect, IonSelectOption, IonTextarea, IonButton, IonIcon]
+  imports: [CommonModule, FormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonInput, IonSelect, IonSelectOption, IonTextarea, IonButton, IonIcon, IonButtons, IonBackButton]
 })
 export class ManualReportPage implements OnInit {
 
@@ -24,6 +26,7 @@ export class ManualReportPage implements OnInit {
     private router: Router,
     private cameraService: CameraService,
     private locationService: LocationService,
+    private reportService: ReportService,
     private alertController: AlertController
   ) { }
 
@@ -55,25 +58,36 @@ export class ManualReportPage implements OnInit {
     }
 
     try {
-      // Obtener ubicación actual
-      const position = await this.locationService.getCurrentPosition();
+      let latitude = 0;
+      let longitude = 0;
+      
+      // Intentar obtener ubicación, pero no bloquear si falla
+      try {
+        const position = await this.locationService.getCurrentPosition();
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+      } catch (error) {
+        console.log('Ubicación no disponible, continuando sin coordenadas');
+      }
       
       // Crear el reporte
-      const report = {
+      const report: Report = {
         id: Date.now().toString(),
         address: this.address,
         type: this.selectedType,
-        status: 'Pendiente' as const,
-        description: this.description,
-        photo: this.selectedPhoto,
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
+        status: 'Pendiente',
+        description: this.description || undefined,
+        photo: this.selectedPhoto || undefined,
+        latitude: latitude || undefined,
+        longitude: longitude || undefined,
         createdAt: new Date(),
         updatedAt: new Date()
       };
 
-      // Aquí se guardaría en el servicio de reportes
-      console.log('Reporte creado:', report);
+      // Guardar en el servicio
+      this.reportService.addReport(report);
+      
+      console.log('Reporte guardado:', report);
       
       this.showAlert('Éxito', 'Reporte guardado correctamente.', () => {
         this.router.navigate(['/my-reports']);

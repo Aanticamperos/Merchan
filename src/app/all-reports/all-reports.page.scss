@@ -1,0 +1,159 @@
+.reports-content {
+  --background: #1a1a1a;
+  --color: #ffffff;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  color: #ffffff;
+}
+
+.reports-container {
+  padding: 20px;
+  padding-bottom: 120px;
+  min-height: calc(100vh - 120px);
+}
+
+.reports-list {
+  margin-bottom: 30px;
+}
+
+.report-item {
+  background: #2a2a2a;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.report-item:hover {
+  background: #3a3a3a;
+}
+
+.report-info {
+  flex: 1;
+  cursor: pointer;
+}
+
+.report-address {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.report-details {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.report-type {
+  font-size: 0.9rem;
+  color: #cccccc;
+  background: #404040;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.report-status {
+  font-size: 0.9rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.status-pendiente {
+  background: #f39c12;
+  color: #000;
+}
+
+.status-en-proceso {
+  background: #3498db;
+  color: #fff;
+}
+
+.status-completado {
+  background: #27ae60;
+  color: #fff;
+}
+
+.report-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.delete-button {
+  margin: 0;
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+  height: auto;
+  min-height: auto;
+}
+
+.delete-icon {
+  color: #e74c3c;
+  font-size: 1.3rem;
+  transition: color 0.3s ease;
+}
+
+.delete-button:hover .delete-icon {
+  color: #c0392b;
+}
+
+.arrow-icon {
+  color: #cccccc;
+  font-size: 1.2rem;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1a1a1a;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #333;
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  color: #cccccc;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #ffffff;
+}
+
+.social-handle {
+  color: #cccccc;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+

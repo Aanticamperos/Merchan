@@ -187,6 +187,9 @@
 
 .action-buttons {
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .back-button {
@@ -201,4 +204,17 @@
 
 .back-button:hover {
   --background: #34495e;
+}
+
+.delete-button {
+  --background: #e74c3c;
+  --color: #ffffff;
+  --border-radius: 12px;
+  height: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.delete-button:hover {
+  --background: #c0392b;
 }

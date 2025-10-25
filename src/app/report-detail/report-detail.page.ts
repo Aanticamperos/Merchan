@@ -1,77 +1,74 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, IonBackButton, AlertController } from '@ionic/angular/standalone';
 import { Report } from '../models/report';
+import { ReportService } from '../services/report.service';
 
 @Component({
   selector: 'app-report-detail',
   templateUrl: './report-detail.page.html',
   styleUrls: ['./report-detail.page.scss'],
   standalone: true,
-  imports: [CommonModule, DatePipe, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon]
+  imports: [CommonModule, DatePipe, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, IonBackButton]
 })
 export class ReportDetailPage implements OnInit {
 
   report: Report | null = null;
+  reportId: string = '';
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private reportService: ReportService,
+    private alertController: AlertController
   ) { }
 
   ngOnInit() {
-    const reportId = this.route.snapshot.queryParams['id'];
-    if (reportId) {
-      this.loadReport(reportId);
+    this.reportId = this.route.snapshot.queryParams['id'];
+    if (this.reportId) {
+      this.loadReport(this.reportId);
     }
   }
 
   loadReport(id: string) {
-    // Simular carga de reporte desde servicio
-    const mockReports: Report[] = [
-      {
-        id: '1',
-        address: 'Calle 80 #12-34, Bogotá',
-        type: 'Bache',
-        status: 'Pendiente',
-        description: 'Bache profundo con agua estancada que representa peligro para vehículos',
-        photo: 'https://via.placeholder.com/400x250/333333/ffffff?text=Bache+con+agua',
-        latitude: 4.6097,
-        longitude: -74.0817,
-        createdAt: new Date('2024-01-15'),
-        updatedAt: new Date('2024-01-15')
-      },
-      {
-        id: '2',
-        address: 'Carrera 7 #45-67, Bogotá',
-        type: 'Semáforo dañado',
-        status: 'En Proceso',
-        description: 'Semáforo no funciona correctamente, solo muestra luz roja',
-        photo: 'https://via.placeholder.com/400x250/333333/ffffff?text=Semáforo+dañado',
-        latitude: 4.6097,
-        longitude: -74.0817,
-        createdAt: new Date('2024-01-14'),
-        updatedAt: new Date('2024-01-16')
-      },
-      {
-        id: '3',
-        address: 'Avenida 68 #23-45, Bogotá',
-        type: 'Señalización',
-        status: 'Completado',
-        description: 'Señal de tránsito dañada y caída',
-        photo: 'https://via.placeholder.com/400x250/333333/ffffff?text=Señal+dañada',
-        latitude: 4.6097,
-        longitude: -74.0817,
-        createdAt: new Date('2024-01-10'),
-        updatedAt: new Date('2024-01-18')
-      }
-    ];
-
-    this.report = mockReports.find(r => r.id === id) || null;
+    const report = this.reportService.getReportById(id);
+    if (report) {
+      // Mapear el tipo a nombre legible
+      this.report = {
+        ...report,
+        type: this.reportService.getTypeDisplayName(report.type)
+      };
+    }
   }
 
   goBack() {
-    this.router.navigate(['/my-reports']);
+    this.router.navigate(['/all-reports']);
+  }
+
+  async deleteReport() {
+    if (!this.report) return;
+
+    const alert = await this.alertController.create({
+      header: 'Confirmar eliminación',
+      message: `¿Estás seguro de que deseas eliminar el reporte de ${this.report.address}? Esta acción no se puede deshacer.`,
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        },
+        {
+          text: 'Eliminar',
+          role: 'destructive',
+          handler: () => {
+            this.reportService.deleteReport(this.reportId);
+            // Navegar de vuelta a all-reports
+            this.router.navigate(['/all-reports'], { replaceUrl: true });
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }

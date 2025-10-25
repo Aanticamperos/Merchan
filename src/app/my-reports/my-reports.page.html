@@ -2,41 +2,28 @@
   <ion-toolbar>
     <ion-title>
       <div class="header-content">
-        <div class="logo">
-          <div class="road-icon">
-            <div class="road"></div>
-            <div class="location-pin"></div>
-          </div>
-          <span class="app-title">MERCHAN APP</span>
-        </div>
-        <h2 class="page-title">Mis reportes</h2>
+        <h2 class="page-title">Mis Reportes</h2>
       </div>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="reports-content">
-  <div class="reports-container">
-    <div class="reports-list">
-      <div class="report-item" *ngFor="let report of reports" (click)="viewReport(report)">
-        <div class="report-info">
-          <div class="report-address">{{ report.address }}</div>
-          <div class="report-details">
-            <span class="report-type">{{ report.type }}</span>
-            <span class="report-status" [class]="'status-' + report.status.toLowerCase().replace(' ', '-')">
-              {{ report.status }}
-            </span>
-          </div>
-        </div>
-        <div class="report-actions">
-          <ion-icon name="chevron-forward" class="arrow-icon"></ion-icon>
-        </div>
-      </div>
-    </div>
-
-    <div class="add-report-button" (click)="goToReportOptions()">
-      <ion-icon name="add" class="add-icon"></ion-icon>
-      <span>Nuevo Reporte</span>
+<ion-content [fullscreen]="true" class="options-content">
+  <div class="options-container">
+    <div class="options-buttons">
+      <ion-button 
+        expand="block" 
+        class="option-button view-reports-button" 
+        (click)="viewAllReports()">
+        VER REPORTES
+      </ion-button>
+      
+      <ion-button 
+        expand="block" 
+        class="option-button new-report-button" 
+        (click)="createNewReport()">
+        NUEVO REPORTE
+      </ion-button>
     </div>
   </div>
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, IonBackButton } from '@ionic/angular/standalone';
 import { CameraService } from '../services/camera.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { CameraService } from '../services/camera.service';
   templateUrl: './photo-capture.page.html',
   styleUrls: ['./photo-capture.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon]
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonButtons, IonBackButton]
 })
 export class PhotoCapturePage implements OnInit {
 
