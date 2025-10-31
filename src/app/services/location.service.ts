@@ -32,4 +32,34 @@ export class LocationService {
       return false;
     }
   }
+
+  async getAddressFromCoordinates(latitude: number, longitude: number): Promise<string> {
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`
+      );
+      const data = await response.json();
+      
+      if (data && data.address) {
+        // Construir dirección legible
+        const address = data.address;
+        const parts: string[] = [];
+        
+        if (address.road) parts.push(address.road);
+        if (address.house_number) parts.push(address.house_number);
+        if (address.neighbourhood) parts.push(address.neighbourhood);
+        if (address.suburb) parts.push(address.suburb);
+        if (address.city || address.town || address.village) parts.push(address.city || address.town || address.village);
+        if (address.state) parts.push(address.state);
+        if (address.country) parts.push(address.country);
+        
+        return parts.length > 0 ? parts.join(', ') : 'Dirección no disponible';
+      }
+      
+      return 'Dirección no disponible';
+    } catch (error) {
+      console.error('Error obteniendo dirección:', error);
+      return 'Dirección no disponible';
+    }
+  }
 }

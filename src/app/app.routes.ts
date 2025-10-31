@@ -35,6 +35,10 @@ export const routes: Routes = [
     loadComponent: () => import('./manual-report/manual-report.page').then( m => m.ManualReportPage)
   },
   {
+    path: 'automatic-report',
+    loadComponent: () => import('./automatic-report/automatic-report.page').then( m => m.AutomaticReportPage)
+  },
+  {
     path: 'photo-preview',
     loadComponent: () => import('./photo-preview/photo-preview.page').then( m => m.PhotoPreviewPage)
   },

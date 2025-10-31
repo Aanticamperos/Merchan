@@ -21,7 +21,6 @@ export class ReportOptionsPage implements OnInit {
   }
 
   goToAutomaticReport() {
-    // Por ahora redirigir a manual report, se puede implementar después
-    this.router.navigate(['/manual-report']);
+    this.router.navigate(['/automatic-report']);
   }
 }

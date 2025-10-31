@@ -1,0 +1,90 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/report-options"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <div class="header-content">
+        <h2 class="page-title">Reporte Automático</h2>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="automatic-content">
+  <div class="automatic-container">
+    <div class="form-section">
+      <div class="input-group">
+        <label class="input-label">Dirección</label>
+        <div class="address-container">
+          <ion-input 
+            [(ngModel)]="address" 
+            placeholder="Ingresa la dirección del problema"
+            [disabled]="isLoadingAddress"
+            class="address-input">
+          </ion-input>
+          <ion-spinner *ngIf="isLoadingAddress" class="loading-spinner"></ion-spinner>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">Tipo de problema</label>
+        <ion-select 
+          [(ngModel)]="selectedType" 
+          placeholder="Selecciona el tipo de problema"
+          class="type-select">
+          <ion-select-option value="bache">Bache</ion-select-option>
+          <ion-select-option value="semaforo">Semáforo dañado</ion-select-option>
+          <ion-select-option value="senalizacion">Señalización</ion-select-option>
+          <ion-select-option value="iluminacion">Iluminación</ion-select-option>
+          <ion-select-option value="otro">Otro</ion-select-option>
+        </ion-select>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">Descripción (opcional)</label>
+        <ion-textarea 
+          [(ngModel)]="description" 
+          placeholder="Describe el problema en detalle"
+          rows="3"
+          class="description-textarea">
+        </ion-textarea>
+      </div>
+    </div>
+
+    <div class="photo-section">
+      <div class="photo-preview" *ngIf="selectedPhoto">
+        <img [src]="selectedPhoto" alt="Foto del problema" class="preview-image">
+        <ion-button 
+          fill="clear" 
+          class="remove-photo-btn"
+          (click)="removePhoto()">
+          <ion-icon name="close" slot="icon-only"></ion-icon>
+        </ion-button>
+      </div>
+      
+      <div class="photo-placeholder" *ngIf="!selectedPhoto">
+        <ion-icon name="camera" class="camera-icon"></ion-icon>
+        <p>No hay foto seleccionada</p>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <ion-button 
+        expand="block" 
+        class="photo-button" 
+        (click)="takePhoto()">
+        TOMAR FOTO
+      </ion-button>
+      
+      <ion-button 
+        expand="block" 
+        class="save-button" 
+        (click)="saveReport()"
+        [disabled]="!isFormValid() || isLoadingAddress">
+        GUARDAR
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
+
